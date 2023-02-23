@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
+    [Header("deafyult seppepdeded")]
+    public float seppepdeded;
+
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        transform.position += Vector3.left * seppepdeded * Time.deltaTime;
     }
 }

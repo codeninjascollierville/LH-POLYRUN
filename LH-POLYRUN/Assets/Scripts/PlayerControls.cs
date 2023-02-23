@@ -28,6 +28,11 @@ public class PlayerControls : MonoBehaviour
         {
             rb.AddForce(Vector3.up * (jumspugnPweorewe * rb.mass * rb.gravityScale * 20.0f));
         }
+
+        if (transform.position.x < psoXx)
+        {
+            agmeoVoeror();
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -35,6 +40,11 @@ public class PlayerControls : MonoBehaviour
         if(collision.collider.tag == "Ground")
         {
             siGrPUDENdend = true;
+        }
+
+        if(collision.collider.tag == "Enemy")
+        {
+            agmeoVoeror();
         }
     }
 
@@ -52,5 +62,19 @@ public class PlayerControls : MonoBehaviour
         {
             siGrPUDENdend = false;
         }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Coin")
+        {
+            GameObject.Find("GameController").GetComponent<GameController>().IncrementScore();
+            Destroy(collision.gameObject);
+        }
+    }
+
+    void agmeoVoeror()
+    {
+        GameObject.Find("GameController").GetComponent<GameController>().GameOver();
     }
 }
